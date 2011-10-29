@@ -17,9 +17,9 @@ class Environment {
 
 	// Return True if Production Environment
 	static function isProduction($host = false) {
-		if (self::_isProductionServer(self::getHostName($host)) && in_array(self::getEnvName($host), self::$servers['production_domains'])) {
-			return true;
-		}
+		//if (self::_isProductionServer(self::getHostName($host)) && in_array(self::getEnvName($host), self::$servers['production_domains'])) {
+		//	return true;
+		//}
 		if (getenv('CAKE_ENV') == 'production') {
 			return true;
 		}
@@ -28,9 +28,9 @@ class Environment {
 
 	// Return True if Test Environment
 	static function isTest($host = false) {
-		if (self::_isDevelopServer(self::getHostName($host)) && in_array(self::getEnvName($host), self::$servers['develop_domains'])) {
-			return true;
-		}
+		//if (self::_isDevelopServer(self::getHostName($host)) && in_array(self::getEnvName($host), self::$servers['develop_domains'])) {
+		//	return true;
+		//}
 		if (getenv('CAKE_ENV') == 'test') {
 			return true;
 		}
@@ -49,6 +49,7 @@ class Environment {
 		$server = self::getServer($host);
 		$hostName = self::getHostName($host);
 		$name = str_replace($server, '', $hostName);
+var_dump($name, rtrim($name, '.'));
 		return rtrim($name, '.');
 	}
 
