@@ -11,6 +11,11 @@ class Environment {
 
 	static $constant = 'ROOT';
 
+	static function getEnvironment() {
+		$env = getenv('CAKE_ENV') ? getenv('CAKE_ENV') : 'development';
+		return $env;
+	}
+
 	static function initialize($settings = array()) {
 		self::$servers = array_merge(self::$servers, $settings);
 	}
@@ -49,7 +54,7 @@ class Environment {
 		//$server = self::getServer($host);
 		//$hostName = self::getHostName($host);
 		//$name = str_replace($server, '', $hostName);
-        $name = self::getHostName();
+		$name = self::getHostName();
 		return rtrim($name, '.');
 	}
 
